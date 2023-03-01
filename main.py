@@ -60,7 +60,8 @@ if __name__ == '__main__':
                         )
                     )
                     last_send = datetime.now()
-                    break
+                    if opened:
+                        break
             err_cnt = 0
         except Exception as e:
             logger.error(e)
