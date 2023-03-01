@@ -1,0 +1,20 @@
+[tool.poetry]
+name = "visa-checking"
+version = "0.1.0"
+description = ""
+authors = ["NguyenLinhUET <nguyenlinh.uet@gmail.com>"]
+readme = "README.md"
+packages = [{include = "visa_checking"}]
+
+[tool.poetry.dependencies]
+python = "^3.8"
+requests = "^2.28.2"
+beautifulsoup4 = "^4.11.2"
+lxml = "^4.9.2"
+random-user-agent = "^1.0.1"
+python-telegram-bot = "^20.1"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
