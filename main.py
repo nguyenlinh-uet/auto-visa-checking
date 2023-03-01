@@ -21,6 +21,7 @@ if __name__ == '__main__':
     user_agent_rotator = UserAgent(software_names=software_names, operating_systems=operating_systems, limit=100)
     err_cnt = 0
     loop = asyncio.get_event_loop()
+    last_send = None
     while err_cnt < 10:
         try:
             response = requests.get(checking_url, headers={
@@ -51,13 +52,14 @@ if __name__ == '__main__':
                 opened = True if 'suspended' not in text_status.lower() else False
                 message = f"{'✅' if opened else '🛑'}{datetime.now().isoformat()}: Current status of apply visa process is \"{text_status}\""
                 logger.info(message)
-                if opened:
+                if opened or last_send is None or (datetime.now() - last_send).total_seconds() > 45 * 60:
                     loop.run_until_complete(
                         send_message_text(
                             chat_id="-806984740",
                             message=message
                         )
                     )
+                    last_send = datetime.now()
                     break
             err_cnt = 0
         except Exception as e:
