@@ -55,7 +55,7 @@ if __name__ == '__main__':
                 if opened or last_send is None or (datetime.now() - last_send).total_seconds() > 45 * 60:
                     loop.run_until_complete(
                         send_message_text(
-                            chat_id="-806984740",
+                            chat_id="-1001685688516",
                             message=message
                         )
                     )
@@ -69,5 +69,5 @@ if __name__ == '__main__':
         time.sleep(30)
     loop.run_until_complete(send_message_text(
         message=f"❌{datetime.now().isoformat()}: Tool stopped, please check",
-        chat_id="-806984740"
+        chat_id="-1001685688516"
     ))
